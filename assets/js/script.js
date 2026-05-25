@@ -58,14 +58,12 @@ document.addEventListener('DOMContentLoaded', function () {
             }
 
             if (isValid) {
-                const submitBtn = document.getElementById('submitBtn');
-                submitBtn.disabled = true;
-
-                setTimeout(() => {
-                    submitBtn.disabled = false;
-                    showFormSuccess('¡Gracias por su mensaje! Nos pondremos en contacto pronto.');
-                    contactForm.reset();
-                }, 1500);
+                const phone = '584124056701';
+                const text = encodeURIComponent(
+                    `Hola, soy ${nombre}. Mi correo es ${email}.\n\n${mensaje}`
+                );
+                window.open(`https://wa.me/${phone}?text=${text}`, '_blank');
+                contactForm.reset();
             }
         });
 

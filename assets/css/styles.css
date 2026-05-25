@@ -119,7 +119,9 @@ header .container {
 
 .logo img {
     height: 44px;
-    width: auto;
+    width: 44px;
+    border-radius: 50%;
+    object-fit: cover;
 }
 
 .logo span {
@@ -309,6 +311,31 @@ header .container {
 .hero h1 em {
     font-style: italic;
     color: var(--color-gold-dark);
+}
+
+.hero-typewriter {
+    position: relative;
+    display: inline;
+    font-style: italic;
+    color: var(--color-gold-dark);
+}
+
+.hero-typewriter-text {
+    display: inline;
+}
+
+.hero-typewriter-cursor {
+    display: inline;
+    font-style: normal;
+    font-weight: 300;
+    color: var(--color-gold);
+    animation: blink-cursor 0.7s step-end infinite;
+    margin-left: 1px;
+}
+
+@keyframes blink-cursor {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
 }
 
 .hero-subtitle {

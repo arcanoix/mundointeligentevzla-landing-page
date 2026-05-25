@@ -120,6 +120,7 @@ document.addEventListener('DOMContentLoaded', function () {
     updateActiveNav();
 
     initScrollAnimations();
+    initHeroTextRotation();
 });
 
 function isValidEmail(email) {
@@ -154,6 +155,53 @@ function showFormSuccess(message) {
             successDiv.style.display = 'none';
         }, 5000);
     }
+}
+
+function initHeroTextRotation() {
+    const textEl = document.querySelector('.hero-typewriter-text');
+    if (!textEl) return;
+
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReducedMotion) return;
+
+    const words = ['ideas', 'proyectos', 'sueños', 'diseños', 'creaciones'];
+    let wordIndex = 0;
+    let charIndex = 0;
+    let isDeleting = false;
+
+    const TYPING_SPEED = 80;
+    const DELETING_SPEED = 45;
+    const PAUSE_AFTER_TYPE = 2200;
+    const PAUSE_AFTER_DELETE = 400;
+
+    function tick() {
+        const currentWord = words[wordIndex];
+
+        if (!isDeleting) {
+            charIndex++;
+            textEl.textContent = currentWord.substring(0, charIndex);
+
+            if (charIndex === currentWord.length) {
+                isDeleting = true;
+                setTimeout(tick, PAUSE_AFTER_TYPE);
+                return;
+            }
+            setTimeout(tick, TYPING_SPEED + Math.random() * 40);
+        } else {
+            charIndex--;
+            textEl.textContent = currentWord.substring(0, charIndex);
+
+            if (charIndex === 0) {
+                isDeleting = false;
+                wordIndex = (wordIndex + 1) % words.length;
+                setTimeout(tick, PAUSE_AFTER_DELETE);
+                return;
+            }
+            setTimeout(tick, DELETING_SPEED + Math.random() * 20);
+        }
+    }
+
+    setTimeout(tick, 800);
 }
 
 function initScrollAnimations() {

@@ -1,102 +1,90 @@
-// Mobile Menu Toggle
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     const menuToggle = document.getElementById('menu-toggle');
     const nav = document.getElementById('nav');
-    
-    menuToggle.addEventListener('click', function() {
+
+    menuToggle.addEventListener('click', function () {
         const isOpen = nav.classList.toggle('active');
-        menuToggle.setAttribute('aria-expanded', isOpen);
-        
-        // Animate hamburger to X
-        const spans = menuToggle.querySelectorAll('.hamburger, .hamburger::before, .hamburger::after');
-        // Since pseudo-elements can't be selected directly, we'll toggle a class on the button
         menuToggle.classList.toggle('active');
+        menuToggle.setAttribute('aria-expanded', String(isOpen));
     });
-    
-    // Close mobile menu when clicking a link
-    const navLinks = document.querySelectorAll('.nav ul li a');
-    navLinks.forEach(link => {
+
+    document.querySelectorAll('.nav ul li a').forEach(link => {
         link.addEventListener('click', () => {
             if (nav.classList.contains('active')) {
                 nav.classList.remove('active');
                 menuToggle.classList.remove('active');
-                menuToggle.setAttribute('aria-expanded', false);
+                menuToggle.setAttribute('aria-expanded', 'false');
             }
         });
     });
-    
-    // Form validation and submission
+
+    document.addEventListener('click', (e) => {
+        if (nav.classList.contains('active') && !nav.contains(e.target) && !menuToggle.contains(e.target)) {
+            nav.classList.remove('active');
+            menuToggle.classList.remove('active');
+            menuToggle.setAttribute('aria-expanded', 'false');
+        }
+    });
+
     const contactForm = document.getElementById('contactForm');
     if (contactForm) {
-        contactForm.addEventListener('submit', function(e) {
+        contactForm.addEventListener('submit', function (e) {
             e.preventDefault();
-            
-            // Get form values
+
             const nombre = document.getElementById('nombre').value.trim();
             const email = document.getElementById('email').value.trim();
             const mensaje = document.getElementById('mensaje').value.trim();
-            
-            // Reset error states
+
             clearFormErrors();
-            
-            // Validate form
+
             let isValid = true;
-            
+
             if (nombre === '') {
-                showFormError('nombre', 'Por favor, ingresa tu nombre');
+                showFormError('nombre', 'Por favor, ingrese su nombre');
                 isValid = false;
             }
-            
+
             if (email === '') {
-                showFormError('email', 'Por favor, ingresa tu correo electrónico');
+                showFormError('email', 'Por favor, ingrese su correo electrónico');
                 isValid = false;
             } else if (!isValidEmail(email)) {
-                showFormError('email', 'Por favor, ingresa un correo electrónico válido');
+                showFormError('email', 'Por favor, ingrese un correo electrónico válido');
                 isValid = false;
             }
-            
+
             if (mensaje === '') {
-                showFormError('mensaje', 'Por favor, ingresa un mensaje');
+                showFormError('mensaje', 'Por favor, ingrese su mensaje');
                 isValid = false;
             }
-            
+
             if (isValid) {
-                // Show loading state
                 const submitBtn = document.getElementById('submitBtn');
                 submitBtn.disabled = true;
-                
-                // Simulate API call (replace with actual fetch/AJAX in production)
+
                 setTimeout(() => {
-                    // Hide loading state
                     submitBtn.disabled = false;
-                    
-                    // Show success message
-                    showFormSuccess('¡Gracias por tu mensaje! Nos pondremos en contacto contigo pronto.');
-                    
-                    // Reset form
+                    showFormSuccess('¡Gracias por su mensaje! Nos pondremos en contacto pronto.');
                     contactForm.reset();
                 }, 1500);
             }
         });
-        
-        // Add real-time validation
-        const formInputs = contactForm.querySelectorAll('input, textarea');
-        formInputs.forEach(input => {
-            input.addEventListener('input', function() {
+
+        contactForm.querySelectorAll('input, textarea').forEach(input => {
+            input.addEventListener('input', function () {
                 const errorDiv = this.parentElement.querySelector('.form-error');
                 if (errorDiv && errorDiv.textContent.trim() !== '') {
                     errorDiv.textContent = '';
+                    this.classList.remove('error');
                 }
             });
         });
     }
-    
-    // Smooth scrolling for anchor links
+
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             const targetId = this.getAttribute('href');
             if (targetId === '#') return;
-            
+
             const targetElement = document.querySelector(targetId);
             if (targetElement) {
                 e.preventDefault();
@@ -107,33 +95,37 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     });
-    
-    // Add active class to navbar links based on scroll position
-    window.addEventListener('scroll', function() {
-        const sections = document.querySelectorAll('section[id]');
+
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.nav ul li a');
+
+    function updateActiveNav() {
         const scrollY = window.pageYOffset;
-        
+
         sections.forEach(current => {
             const sectionHeight = current.offsetHeight;
-            const sectionTop = current.offsetTop - 100;
+            const sectionTop = current.offsetTop - 120;
             const sectionId = current.getAttribute('id');
-            
+
             if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
-                document.querySelector('.nav ul li a[href*="' + sectionId + '"]').classList.add('active');
-            } else {
-                document.querySelector('.nav ul li a[href*="' + sectionId + '"]').classList.remove('active');
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === '#' + sectionId) {
+                        link.classList.add('active');
+                    }
+                });
             }
         });
-    });
-    
-    // Initialize AOS (if using) or other animations
-    initAnimations();
+    }
+
+    window.addEventListener('scroll', updateActiveNav, { passive: true });
+    updateActiveNav();
+
+    initScrollAnimations();
 });
 
-// Helper Functions
 function isValidEmail(email) {
-    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return emailPattern.test(email);
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 }
 
 function showFormError(fieldId, message) {
@@ -146,13 +138,10 @@ function showFormError(fieldId, message) {
 }
 
 function clearFormErrors() {
-    const errorDivs = document.querySelectorAll('.form-error');
-    errorDivs.forEach(div => {
+    document.querySelectorAll('.form-error').forEach(div => {
         div.textContent = '';
     });
-    
-    const errorFields = document.querySelectorAll('.error');
-    errorFields.forEach(field => {
+    document.querySelectorAll('.error').forEach(field => {
         field.classList.remove('error');
     });
 }
@@ -162,8 +151,6 @@ function showFormSuccess(message) {
     if (successDiv) {
         successDiv.textContent = message;
         successDiv.style.display = 'block';
-        
-        // Hide success message after 5 seconds
         setTimeout(() => {
             successDiv.textContent = '';
             successDiv.style.display = 'none';
@@ -171,31 +158,35 @@ function showFormSuccess(message) {
     }
 }
 
-function initAnimations() {
-    // Add any custom animation initialization here
-    // For example, if using AOS or other animation libraries
-    
-    // Add intersection observer for fade-in effects on scroll
-    const fadeElements = document.querySelectorAll('.service-card, .gallery-item');
-    
+function initScrollAnimations() {
+    const fadeElements = document.querySelectorAll('.fade-in');
+
+    if (!fadeElements.length) return;
+
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (prefersReducedMotion) {
+        fadeElements.forEach(el => {
+            el.classList.add('visible');
+        });
+        return;
+    }
+
     const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
+        entries.forEach((entry) => {
             if (entry.isIntersecting) {
-                entry.target.style.opacity = 1;
-                entry.target.style.transform = 'translateY(0)';
+                const index = Array.from(fadeElements).indexOf(entry.target);
+                const delay = index * 120;
+                setTimeout(() => {
+                    entry.target.classList.add('visible');
+                }, delay);
+                observer.unobserve(entry.target);
             }
         });
     }, {
-        threshold: 0.1
+        threshold: 0.1,
+        rootMargin: '0px 0px -40px 0px'
     });
-    
-    fadeElements.forEach((el, index) => {
-        // Initial state for animation
-        el.style.opacity = 0;
-        el.style.transform = 'translateY(30px)';
-        el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-        el.style.transitionDelay = `${index * 0.1}s`;
-        
-        observer.observe(el);
-    });
+
+    fadeElements.forEach(el => observer.observe(el));
 }

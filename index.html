@@ -8,18 +8,16 @@
     <link rel="stylesheet" href="assets/css/styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw5Ac0K5C8hYt1cn1UhRR8hM0YM8ZQrHi0YxpR7nH0d5dxz5Yv5yQ==" crossorigin="anonymous" referrerpolicy="no-referrer">
 </head>
 <body>
-    <!-- Skip link for accessibility -->
-    <a href="#main-content" class="skip-link">Saltarse al contenido principal</a>
-    
-    <!-- Header -->
+    <a href="#main-content" class="skip-link">Saltar al contenido principal</a>
+
     <header>
         <div class="container">
             <div class="logo">
                 <img src="assets/img/logo.png" alt="MundiInteligente VZla Logo">
-                <span>MundiInteligente VZla</span>
+                <span>MundiInteligente</span>
             </div>
             <nav class="nav" id="nav">
                 <ul>
@@ -35,114 +33,131 @@
         </div>
     </header>
 
-    <!-- Main content container -->
     <main id="main-content">
-        <!-- Hero Section -->
         <section class="hero" id="inicio">
             <div class="container">
                 <div class="hero-content">
-                    <h1>Transformamos tus ideas en realidad</h1>
+                    <span class="hero-label">Artesanía & Creatividad</span>
+                    <h1>Transformamos tus <em>ideas</em> en realidad</h1>
                     <p class="hero-subtitle">Servicios profesionales de encuadernación, sublimación, impresión y manualidades personalizadas para darle vida a tus proyectos más creativos.</p>
                     <div class="hero-buttons">
                         <a href="#servicios" class="btn-primary">Nuestros Servicios</a>
                         <a href="#galeria" class="btn-secondary">Ver Galería</a>
                     </div>
                 </div>
-                <div class="hero-image">
-                    <!-- Decorative icon - aria-hidden=true -->
-                    <div class="hero-placeholder" aria-hidden="true">
-                        <i class="fas fa-magic"></i>
+                <div class="hero-visual">
+                    <div class="hero-ornament">
+                        <span class="hero-monogram" aria-hidden="true">MI</span>
+                        <div class="hero-float-card" aria-hidden="true">
+                            <i class="fas fa-book" aria-hidden="true"></i>
+                            <span>Encuadernación</span>
+                        </div>
+                        <div class="hero-float-card" aria-hidden="true">
+                            <i class="fas fa-tshirt" aria-hidden="true"></i>
+                            <span>Sublimación</span>
+                        </div>
+                        <div class="hero-float-card" aria-hidden="true">
+                            <i class="fas fa-print" aria-hidden="true"></i>
+                            <span>Impresión</span>
+                        </div>
+                        <div class="hero-float-card" aria-hidden="true">
+                            <i class="fas fa-paint-brush" aria-hidden="true"></i>
+                            <span>Manualidades</span>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Services Section -->
         <section class="services" id="servicios">
             <div class="container">
                 <div class="section-title">
                     <h2>Nuestros Servicios</h2>
-                    <p>Descubre cómo podemos ayudar a materializar tus ideas con nuestros servicios especializados</p>
+                    <div class="section-divider">
+                        <span class="divider-diamond"></span>
+                    </div>
+                    <p>Descubra cómo podemos ayudar a materializar sus ideas con nuestros servicios especializados</p>
                 </div>
                 <div class="services-grid">
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-book" aria-hidden="true"></i>
+                    <div class="service-card fade-in">
+                        <div class="service-icon">
+                            <i class="fas fa-book" aria-hidden="true"></i>
+                        </div>
+                        <h3>Encuadernación</h3>
+                        <p>Encuadernación de tesis, libros, catálogos y más con acabados profesionales y detallados.</p>
                     </div>
-                    <h3>Encuadernación</h3>
-                    <p>Encuadernación de tesis, libros, catalogos y más con acabados profesionales.</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-tshirt" aria-hidden="true"></i>
+                    <div class="service-card fade-in">
+                        <div class="service-icon">
+                            <i class="fas fa-tshirt" aria-hidden="true"></i>
+                        </div>
+                        <h3>Sublimación</h3>
+                        <p>Personalizamos franelas, tazas, llaveros y otros productos con colores vibrantes.</p>
                     </div>
-                    <h3>Sublimación</h3>
-                    <p>Personalizamos franelas, tazas, llaveros y otros productos con colores vibrantes.</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-print" aria-hidden="true"></i>
+                    <div class="service-card fade-in">
+                        <div class="service-icon">
+                            <i class="fas fa-print" aria-hidden="true"></i>
+                        </div>
+                        <h3>Impresión Publicitaria</h3>
+                        <p>Flyers, trípticos, afiches y materiales promocionales de alta calidad.</p>
                     </div>
-                    <h3>Impresión Publicitaria</h3>
-                    <p>Flyers, trípticos, afiches y materiales promocionales de alta calidad.</p>
-                </div>
-                    <div class="service-card">
+                    <div class="service-card fade-in">
                         <div class="service-icon">
                             <i class="fas fa-paint-brush" aria-hidden="true"></i>
                         </div>
                         <h3>Manualidades</h3>
-                        <p>Creaciones únicas y personalizadas para regalos y decoración.</p>
+                        <p>Creaciones únicas y personalizadas para regalos, decoración y ocasiones especiales.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Gallery Section -->
         <section class="gallery" id="galeria">
             <div class="container">
                 <div class="section-title">
                     <h2>Galería de Trabajos</h2>
+                    <div class="section-divider">
+                        <span class="divider-diamond"></span>
+                    </div>
                     <p>Algunos ejemplos de nuestros proyectos realizados</p>
                 </div>
                 <div class="gallery-grid">
-                    <div class="gallery-item">
-                        <!-- Image with dimensions for CLS prevention -->
-                        <img src="https://via.placeholder.com/400x300?text=Encuadernaci%C3%B3n" alt="Ejemplo de encuadernación profesional" width="400" height="300" loading="lazy">
+                    <div class="gallery-item fade-in">
+                        <img src="https://images.unsplash.com/photo-1544716278-ca5e3c4a1e4e?w=600&h=800&fit=crop" alt="Ejemplo de encuadernación profesional" width="600" height="800" loading="lazy">
                         <div class="gallery-overlay">
                             <h3>Encuadernación</h3>
                             <p>Tesis y libros con acabados premium</p>
                         </div>
                     </div>
-                    <div class="gallery-item">
-                        <img src="https://via.placeholder.com/400x300?text=Sublimaci%C3%B3n" alt="Ejemplo de sublimación en textiles" width="400" height="300" loading="lazy">
+                    <div class="gallery-item fade-in">
+                        <img src="https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?w=400&h=300&fit=crop" alt="Ejemplo de sublimación en textiles" width="400" height="300" loading="lazy">
                         <div class="gallery-overlay">
                             <h3>Sublimación</h3>
                             <p>Franelas, tazas y llaveros personalizados</p>
                         </div>
                     </div>
-                    <div class="gallery-item">
-                        <img src="https://via.placeholder.com/400x300?text=Impresi%C3%B3n" alt="Ejemplo de impresión publicitaria" width="400" height="300" loading="lazy">
+                    <div class="gallery-item fade-in">
+                        <img src="https://images.unsplash.com/photo-1586075010923-2dd4570800c4?w=400&h=300&fit=crop" alt="Ejemplo de impresión publicitaria" width="400" height="300" loading="lazy">
                         <div class="gallery-overlay">
                             <h3>Impresión</h3>
                             <p>Flyers, trípticos y materiales publicitarios</p>
                         </div>
                     </div>
-                    <div class="gallery-item">
-                        <img src="https://via.placeholder.com/400x300?text=Manualidades" alt="Ejemplo de manualidades personalizadas" width="400" height="300" loading="lazy">
+                    <div class="gallery-item fade-in">
+                        <img src="https://images.unsplash.com/photo-1513364776104-7c5a4e1e4e47?w=400&h=300&fit=crop" alt="Ejemplo de manualidades personalizadas" width="400" height="300" loading="lazy">
                         <div class="gallery-overlay">
                             <h3>Manualidades</h3>
                             <p>Creaciones únicas para regalos y decoración</p>
                         </div>
                     </div>
-                    <div class="gallery-item">
-                        <img src="https://via.placeholder.com/400x300?text=Llaveros" alt="Ejemplo de llaveros personalizados" width="400" height="300" loading="lazy">
+                    <div class="gallery-item fade-in">
+                        <img src="https://images.unsplash.com/photo-1513542789412-b6c1891d497a?w=400&h=300&fit=crop" alt="Ejemplo de llaveros personalizados" width="400" height="300" loading="lazy">
                         <div class="gallery-overlay">
                             <h3>Llaveros</h3>
                             <p>Llaveros personalizados en diversos materiales</p>
                         </div>
                     </div>
-                    <div class="gallery-item">
-                        <img src="https://via.placeholder.com/400x300?text=Tazas" alt="Ejemplo de tazas sublimadas" width="400" height="300" loading="lazy">
+                    <div class="gallery-item fade-in">
+                        <img src="https://images.unsplash.com/photo-1577937364010-49b467f9e71c?w=400&h=300&fit=crop" alt="Ejemplo de tazas sublimadas" width="400" height="300" loading="lazy">
                         <div class="gallery-overlay">
                             <h3>Tazas</h3>
                             <p>Tazas sublimadas con diseños exclusivos</p>
@@ -152,45 +167,62 @@
             </div>
         </section>
 
-        <!-- Contact Section -->
         <section class="contact" id="contacto">
             <div class="container">
-                <h2>Contáctanos</h2>
-                <p class="contact-subtitle">¿Listo para comenzar tu proyecto? Envíanos un mensaje y nos pondremos en contacto contigo pronto.</p>
-                <form id="contactForm" novalidate>
-                    <div class="form-group">
-                        <label for="nombre">Nombre completo</label>
-                        <input type="text" id="nombre" name="nombre" required autocomplete="name">
-                        <div class="form-error"></div>
+                <div class="contact-inner">
+                    <div class="contact-info">
+                        <h2>Contáctanos</h2>
+                        <div class="section-divider" style="justify-content: flex-start;">
+                            <span class="divider-diamond"></span>
+                        </div>
+                        <p class="contact-subtitle">¿Listo para comenzar su proyecto? Envíenos un mensaje y nos pondremos en contacto con usted pronto.</p>
+                        <div class="contact-detail">
+                            <i class="fab fa-whatsapp" aria-hidden="true"></i>
+                            <span>+58 412-1234567</span>
+                        </div>
+                        <div class="contact-detail">
+                            <i class="fas fa-envelope" aria-hidden="true"></i>
+                            <span>info@mundointeligente.com</span>
+                        </div>
+                        <div class="contact-detail">
+                            <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
+                            <span>Venezuela</span>
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label for="email">Correo electrónico</label>
-                        <input type="email" id="email" name="email" required autocomplete="email" spellcheck="false">
-                        <div class="form-error"></div>
-                    </div>
-                    <div class="form-group">
-                        <label for="mensaje">Mensaje</label>
-                        <textarea id="mensaje" name="mensaje" rows="5" required autocomplete="off"></textarea>
-                        <div class="form-error"></div>
-                    </div>
-                    <button type="submit" class="btn-primary" id="submitBtn">
-                        <span class="button-text">Enviar Mensaje</span>
-                        <span class="button-loader" aria-hidden="true"></span>
-                    </button>
-                    <div class="form-success" aria-live="polite"></div>
-                </form>
+                    <form id="contactForm" novalidate>
+                        <div class="form-group">
+                            <label for="nombre">Nombre completo</label>
+                            <input type="text" id="nombre" name="nombre" required autocomplete="name">
+                            <div class="form-error"></div>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Correo electrónico</label>
+                            <input type="email" id="email" name="email" required autocomplete="email" spellcheck="false">
+                            <div class="form-error"></div>
+                        </div>
+                        <div class="form-group">
+                            <label for="mensaje">Mensaje</label>
+                            <textarea id="mensaje" name="mensaje" rows="5" required autocomplete="off"></textarea>
+                            <div class="form-error"></div>
+                        </div>
+                        <button type="submit" class="btn-primary" id="submitBtn">
+                            <span class="button-text">Enviar Mensaje</span>
+                            <span class="button-loader" aria-hidden="true"></span>
+                        </button>
+                        <div class="form-success" aria-live="polite"></div>
+                    </form>
+                </div>
             </div>
         </section>
     </main>
 
-    <!-- Footer -->
     <footer>
         <div class="container">
             <p>&copy; 2026 MundiInteligente VZla. Todos los derechos reservados.</p>
             <div class="social-links">
-                <a href="#" aria-label="Visítanos en Facebook" aria-hidden="true"><i class="fab fa-facebook-f"></i></a>
-                <a href="#" aria-label="Síguenos en Instagram" aria-hidden="true"><i class="fab fa-instagram"></i></a>
-                <a href="#" aria-label="Contáctanos por WhatsApp" aria-hidden="true"><i class="fab fa-whatsapp"></i></a>
+                <a href="#" aria-label="Visítanos en Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" aria-label="Síguenos en Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" aria-label="Contáctanos por WhatsApp"><i class="fab fa-whatsapp"></i></a>
             </div>
         </div>
     </footer>
